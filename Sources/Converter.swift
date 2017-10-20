@@ -53,8 +53,8 @@ struct Converter {
   func decimal(string: String, from: Int, length: Int) -> Float {
     let start = string.index(string.startIndex, offsetBy: from)
     let end = string.index(start, offsetBy: length)
-    let range = Range(uncheckedBounds: (start, end))
-    let substring = string.substring(with: range)
+    //TODO: remove force unwrapp
+    let substring = String(string[start...end])!
     let value = UInt8(substring, radix: 16) ?? 0
     return Float(value)
   }
